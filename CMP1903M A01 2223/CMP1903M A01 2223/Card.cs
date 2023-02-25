@@ -6,25 +6,36 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
 {
-    class Card
+    public class Card
     {
         //Base for the Card class.
         //Value: numbers 1 - 13
-        int[] valueNumbers = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
-
+        private int value;
         //Suit: numbers 1 - 4
-        int[] suitNumbers = new int[] { 1, 2, 3, 4 };
+        private int suit;
         //The 'set' methods for these properties could have some validation
 
-        public int Value 
-        { 
-            get { return Value; }
-            set { Value = (int)valueNumbers.GetValue(1, 4);  }
+        public int Value
+        {
+            get { return value; }
+            set { Value = value; }
         }
 
-        public int Suit {
-            get { return Suit; }
-            set { Suit = (int)suitNumbers.GetValue(1, 4); } 
+        public int Suit
+        {
+            get { return suit; }
+            set { Suit = suit; }
+        }
+
+        public Card(int value, int suit)
+        {
+            if (value < 1 || value > 13)
+            {
+                throw new ArgumentException("Invalid card value.");
+            }
+
+            this.value = value;
+            this.suit = suit;
         }
     }
 }
