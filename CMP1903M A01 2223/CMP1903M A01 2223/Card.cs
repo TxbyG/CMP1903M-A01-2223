@@ -29,7 +29,7 @@ namespace CMP1903M_A01_2223
 
         public Card(int value, int suit)
         {
-            if (value < 1 || value > 13)
+            if (value <= 1 || value >= 13 && suit <= 1 || suit >= 4)
             {
                 throw new ArgumentException("Invalid card value.");
             }

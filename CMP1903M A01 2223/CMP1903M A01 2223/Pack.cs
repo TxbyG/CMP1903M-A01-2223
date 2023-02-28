@@ -15,18 +15,13 @@ namespace CMP1903M_A01_2223
             pack = new List<Card>();
 
             //Initialise the card pack here
-            foreach (Suit suit in GetValues(typeof(Suit)))
+            for (int value = 1; value <= 13; value++)
             {
-                for (int value = 1; value <= 13; value++)
+                for (int suit = 1; suit <= 4; suit++)
                 {
                     pack.Add(new Card(value, suit));
                 }
             }
-        }
-
-        private IEnumerable<Suit> GetValues(Type type)
-        {
-            throw new NotImplementedException();
         }
 
         public void ShuffleCardPack()
