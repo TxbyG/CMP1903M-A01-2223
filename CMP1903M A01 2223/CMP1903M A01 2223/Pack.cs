@@ -6,28 +6,69 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
 {
-    class Pack
+    public class Pack
     {
-        List<Card> pack;
+        private readonly List<Card> pack;
 
         public Pack()
         {
+            pack = new List<Card>();
+
             //Initialise the card pack here
+            for (int value = 1; value <= 13; value++)
+            {
+                for (int suit = 1; suit <= 4; suit++)
+                {
+                    pack.Add(new Card(value, suit));
+                }
+            }
         }
 
-        public static bool shuffleCardPack(int typeOfShuffle)
+        public void ShuffleCardPack()
         {
-            //Shuffles the pack based on the type of shuffle
+            Random rng = new Random();
 
+            for (int i = pack.Count - 1; i > 0; i--)
+            {
+                int j = rng.Next(i + 1);
+                Card temp = pack[i];
+                pack[i] = pack[j];
+                pack[j] = temp;
+            }
         }
-        public static Card deal()
+        public Card deal()
         {
             //Deals one card
+            if (pack.Count > 0)
+            {
+                Card card = pack[0];
+                pack.RemoveAt(0);
+                return card;
+            }
+            else
+            {
+                return null;
+            }
 
         }
-        public static List<Card> dealCard(int amount)
+        public List<Card> dealCard(int amount)
         {
             //Deals the number of cards specified by 'amount'
+            List<Card> cards = new List<Card>();
+
+            for (int i = 0; i < amount; i++)
+            {
+                Card card = deal();
+
+                if (card == null)
+                {
+                    break;
+                }
+
+                cards.Add(card);
+            }
+
+            return cards;
         }
     }
 }
