@@ -8,6 +8,7 @@ namespace CMP1903M_A01_2223
 {
     public class Card
     {
+
         //Base for the Card class.
         //Value: numbers 1 - 13
         private int value;
@@ -31,7 +32,7 @@ namespace CMP1903M_A01_2223
         {
             if (value <= 1 || value >= 13 && suit <= 1 || suit >= 4)
             {
-                throw new ArgumentException("Invalid card value.");
+                Console.WriteLine("Invalid card value.");
             }
 
             this.value = value;
